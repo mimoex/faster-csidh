@@ -392,10 +392,12 @@ fp_sq1:
 .section .text
 
 /* TODO use a better addition chain? */
+/*
 .global fp_inv
 fp_inv:
     lea rsi, [rip + .p_minus_2]
     jmp .fp_pow
+    */
 
 .section .rodata
 .p_minus_1_halves:

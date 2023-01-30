@@ -42,7 +42,7 @@ bench:
 mcl/lib/libmcl.a:
 	$(MAKE) -C mcl lib/libmcl.a
 mcl.o: mcl.hpp mcl.h mcl.cpp
-	$(CXX) -c mcl.cpp -O3 -DNDEBUG -Wall -Wextra -I mcl/include -I mcl/src
+	$(CXX) -c mcl.cpp -O3 -DNDEBUG -Wall -Wextra -I ./mcl/include -I ./mcl/src
 
 clean:
 	rm -f main

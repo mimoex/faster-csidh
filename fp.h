@@ -13,6 +13,9 @@ typedef struct fp {
 
 extern const fp fp_0;
 extern const fp fp_1;
+extern const fp p;
+
+extern void binary_inv(fp *x);
 
 void fp_set(fp *x, uint64_t y);
 void fp_cswap(fp *x, fp *y, bool c);
@@ -47,7 +50,13 @@ void fp_sq2(fp *x, fp const *y);
 #define fp_sq1(_x) mcl_mont((_x)->x.c, (_x)->x.c, (_x)->x.c);
 #define fp_sq2(_x, _y) mcl_mont((_x)->x.c, (_y)->x.c, (_y)->x.c);
 #endif
+
+#if 0
 void fp_inv(fp *x);
+#else
+#define fp_inv(_x) binary_inv((_x)->x.c);
+#endif
+
 bool fp_issquare(fp const *x);
 
 void fp_random(fp *x);
