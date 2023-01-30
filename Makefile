@@ -1,5 +1,5 @@
-MCL=mcl.o -lmcl -L ./mcl/lib -lstdc++
-all: mcl/lib/libmcl.a mcl.o
+MCL= fp.o mcl.o -lmcl -L ./mcl/lib -lstdc++
+all: mcl/lib/libmcl.a mcl.o fp.o
 	@gcc \
 		-std=c99 -pedantic \
 		-march=native \
@@ -42,9 +42,15 @@ bench:
 mcl/lib/libmcl.a:
 	$(MAKE) -C mcl lib/libmcl.a
 mcl.o: mcl.hpp mcl.h mcl.cpp
-	$(CXX) -c mcl.cpp -O3 -DNDEBUG -Wall -Wextra -I ./mcl/include -I ./mcl/src
+	$(CXX) -c mcl.cpp -O3 -DNDEBUG -Wall -Wextra -I mcl/include -I mcl/src
+
+fp.o: fp.cpp
+	$(CXX) -c fp.cpp -O3 -DNDEBUG -Wall -Wextra -I mcl/include -I mcl/src
+
+
 
 clean:
 	rm -f main
 	rm -f bench
+	rm -f *.o
 

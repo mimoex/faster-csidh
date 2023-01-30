@@ -196,9 +196,16 @@ void action(public_key *out, public_key const *in, private_key const *priv)
             }
 
             done[sign] &= !e[sign][i];
-        }
+            
 
+        }
+        u512_print(&A.z.x);
+printf("\n");
+        fp_dec(&A.z.x, &A.z);
+        u512_print(&A.z.x);
+printf("\n");
         fp_inv(&A.z);
+        fp_enc(&A.z, &A.z.x);
         fp_mul2(&A.x, &A.z);
         A.z = fp_1;
 

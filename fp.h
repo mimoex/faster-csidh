@@ -15,7 +15,13 @@ extern const fp fp_0;
 extern const fp fp_1;
 extern const fp p;
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 extern void binary_inv(fp *x);
+#ifdef __cplusplus
+}
+#endif
 
 void fp_set(fp *x, uint64_t y);
 void fp_cswap(fp *x, fp *y, bool c);
@@ -54,7 +60,7 @@ void fp_sq2(fp *x, fp const *y);
 #if 0
 void fp_inv(fp *x);
 #else
-#define fp_inv(_x) binary_inv((_x)->x.c);
+#define fp_inv(_x) binary_inv(_x);
 #endif
 
 bool fp_issquare(fp const *x);
