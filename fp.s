@@ -4,6 +4,7 @@
 .section .rodata
 
 .set pbits, 511
+.global p
 p:
     .quad 0x1b81b90533c6c87b, 0xc2721bf457aca835, 0x516730cc1f0b4f25, 0xa7aac6c567f35507
     .quad 0x5afbfcc69322c9cd, 0xb42d083aedc88c42, 0xfc8ab0d15e3e4c4a, 0x65b48e8f740f89bf
@@ -17,6 +18,8 @@ fp_1: /* 2^512 mod p */
     .quad 0xc8fc8df598726f0a, 0x7b1bc81750a6af95, 0x5d319e67c1e961b4, 0xb0aa7275301955f1
     .quad 0x4a080672d9ba6c64, 0x97a5ef8a246ee77b, 0x06ea9e5d4383676a, 0x3496e2e117e0ec80
 
+.global one
+one: .quad 1, 0, 0, 0, 0, 0, 0, 0
 
 /* (2^512)^2 mod p */
 .r_squared_mod_p:
@@ -392,12 +395,10 @@ fp_sq1:
 .section .text
 
 /* TODO use a better addition chain? */
-/*
 .global fp_inv
 fp_inv:
     lea rsi, [rip + .p_minus_2]
     jmp .fp_pow
-    */
 
 .section .rodata
 .p_minus_1_halves:

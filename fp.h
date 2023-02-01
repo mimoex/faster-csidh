@@ -11,9 +11,10 @@ typedef struct fp {
     u512 x;
 } fp;
 
-extern const fp fp_0;
-extern const fp fp_1;
-extern const fp p;
+extern const fp fp_0;   //0
+extern const fp fp_1;   //1*R
+extern const fp p;      //p
+extern const fp one;    //1
 
 #ifdef __cplusplus
 extern "C" {
@@ -26,8 +27,8 @@ extern void binary_inv(fp *x);
 void fp_set(fp *x, uint64_t y);
 void fp_cswap(fp *x, fp *y, bool c);
 
-void fp_enc(fp *x, u512 const *y); /* encode to Montgomery representation */
-void fp_dec(u512 *x, fp const *y); /* decode from Montgomery representation */
+extern void fp_enc(fp *x, u512 const *y); /* encode to Montgomery representation */
+extern void fp_dec(u512 *x, fp const *y); /* decode from Montgomery representation */
 
 #if 0
 void fp_add2(fp *x, fp const *y);

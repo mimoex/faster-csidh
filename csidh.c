@@ -199,10 +199,7 @@ void action(public_key *out, public_key const *in, private_key const *priv)
             
 
         }
-        //fp_dec(&A.z.x, &A.z);
-        
         fp_inv(&A.z);
-        //fp_enc(&A.z, &A.z.x);
         fp_mul2(&A.x, &A.z);
         A.z = fp_1;
 
