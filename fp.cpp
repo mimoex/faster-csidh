@@ -10,10 +10,10 @@ extern void binary_inv(fp *x)
 {
     fp u, v, r, s;
     
-    fp_dec(&x->x, x);   // From Montgomery
+    fp_dec(&v.x, x);   // From Montgomery
 
-    u = p; v = *x; s = one; r=fp_0;
-    while (!(mcl::bint::cmpEqT<N>(u.x.c, one.x.c)) && !(mcl::bint::cmpEqT<N>(v.x.c, one.x.c))) {
+    u = p; s.x = u512_1; r = fp_0;
+    while (!(mcl::bint::cmpEqT<N>(u.x.c, u512_1.c)) && !(mcl::bint::cmpEqT<N>(v.x.c, u512_1.c))) {
         while ((u.x.c[0] & 1) == 0) {
             mcl::bint::shrT<N>(u.x.c, u.x.c, 1);        //u >>= 1;
             if ((r.x.c[0] & 1) == 1) 
@@ -36,7 +36,7 @@ extern void binary_inv(fp *x)
             mcl_sub(s.x.c, s.x.c, r.x.c);
         }
     }
-    if (mcl::bint::cmpEqT<N>(u.x.c, one.x.c))
+    if (mcl::bint::cmpEqT<N>(u.x.c, u512_1.c))
         mcl_sub(x->x.c, r.x.c, p.x.c);
     else 
         mcl_sub(x->x.c, s.x.c, p.x.c);

@@ -18,8 +18,6 @@ fp_1: /* 2^512 mod p */
     .quad 0xc8fc8df598726f0a, 0x7b1bc81750a6af95, 0x5d319e67c1e961b4, 0xb0aa7275301955f1
     .quad 0x4a080672d9ba6c64, 0x97a5ef8a246ee77b, 0x06ea9e5d4383676a, 0x3496e2e117e0ec80
 
-.global one
-one: .quad 1, 0, 0, 0, 0, 0, 0, 0
 
 /* (2^512)^2 mod p */
 .r_squared_mod_p:

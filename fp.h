@@ -14,7 +14,6 @@ typedef struct fp {
 extern const fp fp_0;   //0
 extern const fp fp_1;   //1*R
 extern const fp p;      //p
-extern const fp one;    //1
 
 #ifdef __cplusplus
 extern "C" {
